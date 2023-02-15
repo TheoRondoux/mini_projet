@@ -15,6 +15,7 @@ Personnage::Personnage(int vie, int defense, int degats, std::string arme, std::
 void Personnage::Attack(Personnage *p)
 {
     if  (this->degats > p->defense){
+        std::cout << this->nom << " retire " << this->degats - p->defense << " à " << p->nom << std::endl;
         p->vie -= this->degats - p->defense;
     }
     else

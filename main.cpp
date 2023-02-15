@@ -65,6 +65,34 @@ Hero createHero(int index)
     return Knight("", "");  
 }
 
+void heroAction(Hero hero, int lapCounter, vector<Monster> &monsters)
+{
+    char action = 'Z';
+    while (action != 'A' && action != 'D' && action != 'P')
+    {
+        if (lapCounter % 3 == 0){   
+            cout << "Choissisez une action à réaliser pour " << hero.getName() << ":\n  [A]ttaquer\n  Se [D]efendre\n  Utiliser [P]ouvoir\n-> ";
+        }
+        else{
+            cout << "Choissisez une action à réaliser pour " << hero.getName() << ":\n  [A]ttaquer\n  Se [D]efendre\n-> ";
+        }
+        cin >> action;
+    }
+
+    switch(action)
+    {
+        case 'A':
+            hero.Attack(&monsters[(rand() % monsters.size())]);
+            break;
+        case 'D':
+            hero.increaseDefense();
+            break;
+        case 'P':
+            //A FAIRE
+            break;
+    }
+}
+
 int main(int argc, char *argv[])
 {
     srand(time(NULL));
@@ -87,57 +115,50 @@ int main(int argc, char *argv[])
     //Début de la partie
     int lapCounter = 0;
     bool endGame = false;
-    cout << "Appuyez sur Entrée pour commerncer la partie" << endl;
+    char enter;
+    cout << "\nAppuyez sur Entrée pour commerncer la partie" << endl;
     cin.ignore();
     while(!endGame)
     {
+        cin.ignore();
         lapCounter++;
-        cout << "--- Tour " << lapCounter << " ---\n" << endl;
+        vector<int> monstersToErase;
+        cout << "\n\n--- Tour " << lapCounter << " ---\n" << endl;
+
         for (Hero hero : heros)
         {
-            char action = 'Z';
-            while (action != 'A' && action != 'D' && action != 'P')
+            heroAction(hero, lapCounter, monsters);
+        }
+        
+        for (int i = 0; i < monsters.size(); i++)
+        {
+            if (monsters[i].getVie() > 0)
             {
-                if (lapCounter % 3 == 0){   
-                    cout << "Choissisez une action à réaliser pour " << hero.getName() << ":\n  [A]ttaquer\n   Se [D]efendre   \n  Utiliser [P]ouvoir\n-> ";
-                }
-                else{
-                    cout << "Choissisez une action à réaliser pour " << hero.getName() << ":\n  [A]ttaquer\n   Se [D]efendre\n-> ";
-                }
-                cin >> action;
+                monsters[i].infos();
             }
-
-            switch(action)
+            else
             {
-                case 'A':
-                    hero.Attack(&monsters[(rand() % monsters.size())]);
-                    break;
-                case 'D':
-                    hero.increaseDefense();
-                    break;
-                case 'P':
-                    break;
+                cout << monsters[i].getName() << " a été vaincu !" << endl;
+                monstersToErase.push_back(i);
             }
         }
 
-        for (int i = 0; i < monsters.size(); i++)
+        for (int index : monstersToErase)
         {
-            monsters[i].infos();
-            if (monsters[i].getVie() <= 0)
-            {
-                monsters.erase(monsters.begin()+i);
-            }
+            monsters.erase(monsters.begin()+index);
         }
 
         for (Hero hero : heros)
         {
             hero.resetDefense();
         }
-        cout << "Appuyez sur Entrée pour continuer" << endl;
-        cin.ignore();
+
         if(monsters.size() == 0 || heros.size() == 0)
         {
             endGame = true;
         }
+
+        cout << "\nAppuyez sur Entrée pour continuer" << endl;
+        cin.ignore();
     }
 }
