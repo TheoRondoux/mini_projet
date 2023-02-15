@@ -7,9 +7,11 @@
 
 class Hero : public Personnage
 {
-
+    protected:
+    bool hasUsedCapactiy = false;
     public:
     Hero(int vie, int defense, int degats, std::string arme, std::string nom);
+    void Protect();
     virtual void lancerPouvoir();
     ~Hero();
 };

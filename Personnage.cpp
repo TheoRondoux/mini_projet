@@ -9,6 +9,7 @@ Personnage::Personnage(int vie, int defense, int degats, std::string arme, std::
     this->degats = degats;
     this->arme = arme;
     this->nom = nom;
+    this->tempDefense = defense;
 }
 
 void Personnage::Attack(Personnage *p)
@@ -18,7 +19,7 @@ void Personnage::Attack(Personnage *p)
     }
     else
     {
-        std::cout << "L'ennemi a réussi à se défendre" << std::endl;
+        std::cout << "L'ennemi esquive l'attaque" << std::endl;
     }
 }
 
@@ -55,9 +56,19 @@ std::string Personnage::getArme()
     return this->arme;
 }
 
+void Personnage::increaseDefense()
+{
+    this->defense*=1.75;
+}
+
+void Personnage::resetDefense()
+{
+    this->defense = this->tempDefense;
+}
+
 void Personnage::infos()
 {
-    std::cout << this->nom << ", " << this->arme << ": " << this->vie << " HP " << this->degats << " points de degats " << this->defense << " points de defense." << std::endl;
+    std::cout << this->nom << ": " << this->vie << " HP " << std::endl;
 }
 
 

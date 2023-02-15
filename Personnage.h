@@ -12,8 +12,8 @@ class Personnage
     int degats;
     std::string arme;
     std::string nom;
-    bool hasUsedCapactiy = false;
     bool hasDefend = false;
+    int tempDefense = 0;
 
     public:
     Personnage(int vie, int defense, int degats, std::string arme, std::string nom);
@@ -26,6 +26,10 @@ class Personnage
     void setDegats(int newDegats);
     std::string getName();
     std::string getArme();
+    void setHasDefend();
+    bool getHasDefend();
+    void resetDefense();
+    void increaseDefense();
     void infos();
     ~Personnage();
 };
