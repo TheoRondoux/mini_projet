@@ -13,7 +13,8 @@ class Personnage
     std::string arme;
     std::string nom;
     bool hasDefend = false;
-    int tempDefense = 0;
+    int tempDefense;
+    int tempDegats;
 
     public:
     Personnage(int vie, int defense, int degats, std::string arme, std::string nom);
@@ -28,7 +29,7 @@ class Personnage
     std::string getArme();
     void setHasDefend();
     bool getHasDefend();
-    void resetDefense();
+    void resetValues();
     void increaseDefense();
     void infos();
     ~Personnage();

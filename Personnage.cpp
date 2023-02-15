@@ -10,6 +10,7 @@ Personnage::Personnage(int vie, int defense, int degats, std::string arme, std::
     this->arme = arme;
     this->nom = nom;
     this->tempDefense = defense;
+    this->tempDegats = degats;
 }
 
 void Personnage::Attack(Personnage *p)
@@ -62,9 +63,10 @@ void Personnage::increaseDefense()
     this->defense*=1.75;
 }
 
-void Personnage::resetDefense()
+void Personnage::resetValues()
 {
     this->defense = this->tempDefense;
+    this->degats = this->tempDegats;
 }
 
 void Personnage::infos()

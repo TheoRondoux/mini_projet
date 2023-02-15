@@ -72,7 +72,7 @@ void heroAction(Hero *hero, int lapCounter, vector<Monster> &monsters)
     while (action != 'A' && action != 'D' && action != 'P')
     {
         if (lapCounter % 3 == 0){   
-            cout << "Choissisez une action à réaliser pour " << hero->getName() << ":\n  [A]ttaquer\n  Se [D]efendre\n  Utiliser [P]ouvoir\n-> ";
+            cout << "Choissisez une action à réaliser pour " << hero->getName() << ":\n  [A]ttaquer\n  Se [D]efendre\n  Utiliser [P]ouvoir et Attaquer\n-> ";
         }
         else{
             cout << "Choissisez une action à réaliser pour " << hero->getName() << ":\n  [A]ttaquer\n  Se [D]efendre\n-> ";
@@ -90,6 +90,7 @@ void heroAction(Hero *hero, int lapCounter, vector<Monster> &monsters)
             break;
         case 'P':
             hero->lancerPouvoir();
+            hero->Attack(&monsters[(rand() % monsters.size())]);
             break;
     }
 }
@@ -183,7 +184,7 @@ int main(int argc, char *argv[])
         //Réinitialisation de la défense de tous les héros
         for (Hero* hero : heros)
         {
-            hero->resetDefense();
+            hero->resetValues();
         }
 
         //On regarde si la partie est terminée ou non

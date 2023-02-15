@@ -8,7 +8,7 @@ Knight::Knight(std::string arme, std::string nom) : Hero((rand() % (70-40+1)+40)
 void Knight::lancerPouvoir()
 {
     this->degats +=5;
-    std::cout << this->nom << " gagne 5 points de dégats pour le prochain tour" << std::endl; 
+    std::cout << this->nom << " gagne 5 points de dégats pour ce tour." << std::endl; 
 }
 
 Knight::~Knight(){}
