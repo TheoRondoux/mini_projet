@@ -15,12 +15,12 @@ Personnage::Personnage(int vie, int defense, int degats, std::string arme, std::
 void Personnage::Attack(Personnage *p)
 {
     if  (this->degats > p->defense){
-        std::cout << this->nom << " retire " << this->degats - p->defense << " à " << p->nom << std::endl;
+        std::cout << "\n" << this->nom << " retire " << this->degats - p->defense << "HP à " << p->nom << "\n" << std::endl;
         p->vie -= this->degats - p->defense;
     }
     else
     {
-        std::cout << "L'ennemi esquive l'attaque" << std::endl;
+        std::cout << "\n" << this->nom << " attaque " << p->nom << ". " << p->nom << " évite l'attaque !" << "\n" << std::endl;
     }
 }
 
