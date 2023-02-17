@@ -69,16 +69,16 @@ Hero* createHero(int index)
 }
 
 //Permet au héros de faire une action
-void heroAction(Hero *hero, int lapCounter, vector<Monster> &monsters)
+void makeActionHero(Hero *hero, int lapCounter, vector<Monster> &monsters)
 {
     char action = 'Z';
     while (action != 'A' && action != 'D' && action != 'P')     //Tant que l'action n'est pas dans les options possibles
     {
         if (lapCounter % 3 == 0){     //Si le numéro du tour est divisible par 3, on propose à l'utilisateur d'utiliser son pouvoir
-            cout << "Choissisez une action à réaliser pour " << hero->getName() << ":\n  [A]ttaquer\n  Se [D]efendre\n  Utiliser [P]ouvoir et Attaquer\n-> ";
+            cout << "Choissisez une action à réaliser pour " << hero->getName() << " (" << hero->getHp() << " PV):\n  [A]ttaquer\n  Se [D]efendre\n  Utiliser [P]ouvoir et Attaquer\n-> ";
         }
         else{
-            cout << "Choissisez une action à réaliser pour " << hero->getName() << ":\n  [A]ttaquer\n  Se [D]efendre\n-> ";
+            cout << "Choissisez une action à réaliser pour " << hero->getName() << " (" << hero->getHp() << " PV):\n  [A]ttaquer\n  Se [D]efendre\n-> ";
         }
         cin >> action;      //On demande à l'utilisateur de saisir un caractère
     }
@@ -113,6 +113,7 @@ int main(int argc, char *argv[])
     for (int i = 0; i < 4; i++)
     {
         heros.push_back(createHero(i));
+        heros[i]->displayDescription();
     }
     
     //Création des monstres et de la liste où ils sont contenus
@@ -140,7 +141,7 @@ int main(int argc, char *argv[])
         //Pour tous les héros, on leur fait éxécuter une action
         for (Hero* hero : heros)
         {
-            heroAction(hero, lapCounter, monsters);
+            makeActionHero(hero, lapCounter, monsters);
         }
         //Chaque monstre va attaquer un héros au hasard
         for (Monster monster : monsters)
@@ -156,7 +157,7 @@ int main(int argc, char *argv[])
         {
             if (heros[i]->getHp() > 0)
             {
-                heros[i]->info();
+                heros[i]->displayInfo();
             }
             else
             {
@@ -169,7 +170,7 @@ int main(int argc, char *argv[])
         {
             if (monsters[i].getHp() > 0)
             {
-                monsters[i].info();
+                monsters[i].displayInfo();
             }
             else
             {

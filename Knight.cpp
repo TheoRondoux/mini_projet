@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-Knight::Knight(std::string weapon, std::string name) : Hero((rand() % (70-40+1)+40), (rand() % (6-4+1)+4), 8, weapon, name){}
+Knight::Knight(std::string weapon, std::string name) : Hero((rand() % (70-50+1)+50), (rand() % (6-4+1)+4), 8, weapon, name){}
 
 void Knight::useAbility()
 {

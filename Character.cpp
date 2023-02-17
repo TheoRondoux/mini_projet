@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-Character::Character(int hp, int defence, int damage, std::string arme, std::string name)
+Character::Character(int hp, int defence, int damage, std::string weapon, std::string name)
 {
     this->hp = hp;
     this->defence = defence;
@@ -37,14 +37,6 @@ void Character::setHp(int newHp)
 {
     this->hp = newHp;
 }
-int Character::getDefence()
-{
-    return this->defence;
-}
-void Character::setDefence(int newDefence)
-{
-    this->defence = newDefence;
-}
 int Character::getDamage()
 {
     return this->damage;
@@ -74,9 +66,14 @@ void Character::resetValues()
     this->numberOfAttacks = 1;
 }
 
-void Character::info()
+void Character::displayInfo()
 {
     std::cout << this->name << ": " << this->hp << " HP " << std::endl;
+}
+
+void Character::displayDescription()
+{
+    std::cout << "\n--- Résumé du personnage ---\n\n" << this->name << " (" << this->hp << " PV)\n   - Arme : " << this->weapon << "\n   - Dégats : " << this->damage << "\n   - Defense : " << this->defence << "\n\n----------------------------" << std::endl;
 }
 
 

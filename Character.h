@@ -22,8 +22,6 @@ class Character
     void Attack(Character *p);
     int getHp();
     void setHp(int newHp);
-    int getDefence();
-    void setDefence(int newDefence);
     int getDamage();
     void setDamage(int newDamage);
     std::string getName();
@@ -32,7 +30,8 @@ class Character
     bool getHasDefend();
     void resetValues();
     void increaseDefence();
-    void info();
+    void displayInfo();
+    void displayDescription();
     ~Character();
 };
 

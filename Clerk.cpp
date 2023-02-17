@@ -7,7 +7,7 @@ Clerk::Clerk(std::string weapon, std::string name) : Hero((rand() % (60-40+1)+40
 void Clerk::useAbility()
 {
     this->hp += 5;
-    std::cout << this->name << " a regagné des PVs" << std::endl;
+    std::cout << this->name << " a regagné 5 PVs" << std::endl;
 }
 
 Clerk::~Clerk(){}
