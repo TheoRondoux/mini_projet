@@ -3,9 +3,9 @@
 #include <iostream>
 #include <string>
 
-Hero::Hero(int vie, int defense, int degats, std::string arme, std::string nom):Personnage(vie, defense, degats, arme, nom){}
+Hero::Hero(int hp, int defence, int damage, std::string weapon, std::string name):Character(hp, defence, damage, weapon, name){}
 
-void Hero::lancerPouvoir()
+void Hero::useAbility()
 {
     std::cout << "Hero Ability" << std::endl;
 }

@@ -8,8 +8,8 @@
 class Ninja : public Hero
 {
     public:
-    Ninja(std::string arme, std::string nom);
-    virtual void lancerPouvoir(Personnage *p);
+    Ninja(std::string weapon, std::string name);
+    virtual void useAbility();
     ~Ninja();
 };
 

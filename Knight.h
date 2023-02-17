@@ -8,8 +8,8 @@
 class Knight : public Hero 
 {
     public:
-    Knight(std::string arme, std::string nom);
-    virtual void lancerPouvoir();
+    Knight(std::string weapon, std::string name);
+    virtual void useAbility();
     ~Knight();
 };
 

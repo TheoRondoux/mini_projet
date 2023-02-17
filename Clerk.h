@@ -8,8 +8,8 @@
 class Clerk : public Hero
 {
     public:
-    Clerk(std::string arme, std::string nom);
-    virtual void lancerPouvoir();
+    Clerk(std::string weapon, std::string name);
+    virtual void useAbility();
     ~Clerk();
 };
 

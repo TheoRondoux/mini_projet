@@ -3,16 +3,16 @@
 
 #include <iostream>
 #include <string>
-#include "Personnage.h"
+#include "Character.h"
 
-class Hero : public Personnage
+class Hero : public Character
 {
     protected:
     bool hasUsedCapactiy = false;
     public:
-    Hero(int vie, int defense, int degats, std::string arme, std::string nom);
+    Hero(int hp, int defence, int damage, std::string weapon, std::string name);
     void Protect();
-    virtual void lancerPouvoir();
+    virtual void useAbility();
     ~Hero();
 };
 

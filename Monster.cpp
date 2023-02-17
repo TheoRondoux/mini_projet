@@ -2,7 +2,7 @@
 #include <string>
 #include "Monster.h"
 
-Monster::Monster(int vie, int defense, int degats, std::string arme, std::string nom, std::string race):Personnage(vie, defense, degats, arme, nom)
+Monster::Monster(int hp, int defence, int damage, std::string weapon, std::string name, std::string race):Character(hp, defence, damage, weapon, name)
 {
     this->race = race;
 }

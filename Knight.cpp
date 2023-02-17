@@ -3,12 +3,12 @@
 #include <iostream>
 #include <string>
 
-Knight::Knight(std::string arme, std::string nom) : Hero((rand() % (70-40+1)+40), (rand() % (6-4+1)+4), 8, arme, nom){}
+Knight::Knight(std::string weapon, std::string name) : Hero((rand() % (70-40+1)+40), (rand() % (6-4+1)+4), 8, weapon, name){}
 
-void Knight::lancerPouvoir()
+void Knight::useAbility()
 {
-    this->degats +=5;
-    std::cout << this->nom << " gagne 5 points de dégats pour ce tour." << std::endl; 
+    this->damage +=5;
+    std::cout << this->name << " gagne 5 points de dégats pour ce tour." << std::endl; 
 }
 
 Knight::~Knight(){}

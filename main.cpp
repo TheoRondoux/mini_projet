@@ -17,22 +17,22 @@ using namespace std;
 Monster generateMonster(int& orcCounter, int& goblinCounter) 
 {   
     string races[] = {"Orc", "Goblin"};                         //Liste des différentes races
-    string armes[] = {"Hache", "Gourdin"};                      //Liste des armes possibles pour les monstres
-    int degats[] = {8, 5};                                      //Degats possibles en fonction des armes
+    string weapons[] = {"Hache", "Gourdin"};                    //Liste des armes possibles pour les monstres
+    int damages[] = {8, 5};                                     //Degats possibles en fonction des armes
     int index = rand() % (sizeof(races)/sizeof(races[0]));      //Permet de choisir aléatoirement un index pour choisir la race, l'arme et les dégats
-    int tmpDefense;
+    int tmpDefence;
     string name;
     if (races[index] == "Orc"){                                 //Si c'est un orc,
-        tmpDefense = rand() % (6-4+1)+4;                        //On génère aléatoirement un chiffre de défense entre 4 et 6
+        tmpDefence = rand() % (6-4+1)+4;                        //On génère aléatoirement un chiffre de défense entre 4 et 6
         name = races[index] + " " + to_string(orcCounter);      //Son nom est composé de sa race et d'un chiffre qui reprend le nombre total d'orcs créés    
         orcCounter ++;                                          //Incrémentation du compteur d'orc créés
     }
     else if (races[index] == "Goblin"){                         //Sinon, si c'est un Goblin, on effectue les memes actions que pour les orcs, mais avec des valeurs
-        tmpDefense = rand() % (4-2+1)+2;                        //différentes
+        tmpDefence = rand() % (4-2+1)+2;                        //différentes
         name = races[index] + " " + to_string(goblinCounter);
         goblinCounter ++;
     }
-    return Monster(rand() % (20-10+1)+10, tmpDefense, degats[index], armes[index], name, races[index]);
+    return Monster(rand() % (20-10+1)+10, tmpDefence, damages[index], weapons[index], name, races[index]);
 }
 
 //Permet de créer un héros
@@ -58,14 +58,14 @@ Hero* createHero(int index)
     switch (classSelector)                  //En fonction de la classe choisie, génère le bon type de héros
     {
         case 'K':
-            return new Knight((weaponSelector == 0 ? "Hallebarde" : "Epee longue"), name);
+            return new Knight((weaponSelector == 0 ? "Hallebarde" : "Epee longue"), name);          //Création d'un chevalier avec une arme aléatoire
         case 'C':
-            return new Clerk((weaponSelector == 0 ? "Masse" : "Hache"), name);
+            return new Clerk((weaponSelector == 0 ? "Masse" : "Hache"), name);                      //Création d'un clerc avec une arme aléatoire
         case 'N':
-            return new Ninja("Sai", name);
+            return new Ninja("Sai", name);                                                          //Création d'un ninja
     }
 
-    return new Knight("", "");  
+    return new Knight("", "");  //Return obligatoire pour que le programme compile
 }
 
 //Permet au héros de faire une action
@@ -89,16 +89,17 @@ void heroAction(Hero *hero, int lapCounter, vector<Monster> &monsters)
             hero->Attack(&monsters[(rand() % monsters.size())]);        //On attaque un monstre aléatoire dans la liste
             break;
         case 'D':
-            hero->increaseDefense();                                    //Ou on défend
+            hero->increaseDefence();                                    //Ou on défend
             break;
         case 'P':
             if (lapCounter % 3 == 0){                                   //Ou Si le numéro du tour est divisible par 3
-                hero->lancerPouvoir();                                  //On utilise le pouvoir
+                hero->useAbility();                                     //On utilise le pouvoir
             }
             else{
                 cout << "Le pouvoir ne peut être lancé que tous les 3 tours, un attaque simple est lancée à la place..." << endl;
             }
-            hero->Attack(&monsters[(rand() % monsters.size())]);        //Et on attaque
+            Monster &monsterToAttact = monsters[(rand() % monsters.size())];    //On choisit un monstre à attaquer
+            hero->Attack(&monsterToAttact);                                     //Et on attaque
             break;
     }
     cout << "" << endl;
@@ -144,7 +145,7 @@ int main(int argc, char *argv[])
         //Chaque monstre va attaquer un héros au hasard
         for (Monster monster : monsters)
         {
-            if (monster.getVie() > 0)
+            if (monster.getHp() > 0)
             {
                 monster.Attack(heros[(rand() % heros.size())]);
             }
@@ -153,9 +154,9 @@ int main(int argc, char *argv[])
         cout << "\n" << "--- Résumé du tour ---\n" << endl;
         for (int i = 0; i < heros.size(); i++)  //Affichage des infotmations des héros (soit ses PVs, soit s'il est vaincu)
         {
-            if (heros[i]->getVie() > 0)
+            if (heros[i]->getHp() > 0)
             {
-                heros[i]->infos();
+                heros[i]->info();
             }
             else
             {
@@ -166,9 +167,9 @@ int main(int argc, char *argv[])
         cout << "" << endl;
         for (int i = 0; i < monsters.size(); i++)   //Affichage des informations des monstres (comme les héros)
         {
-            if (monsters[i].getVie() > 0)
+            if (monsters[i].getHp() > 0)
             {
-                monsters[i].infos();
+                monsters[i].info();
             }
             else
             {

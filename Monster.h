@@ -3,14 +3,14 @@
 
 #include <iostream>
 #include <string>
-#include "Personnage.h"
+#include "Character.h"
 
-class Monster : public Personnage
+class Monster : public Character
 {
     private:
     std::string race;
     public:
-    Monster(int vie, int defense, int degats, std::string arme, std::string nom, std::string race);
+    Monster(int hp, int defence, int damage, std::string weapon, std::string name, std::string race);
     std::string getRace();
     ~Monster();
 };
