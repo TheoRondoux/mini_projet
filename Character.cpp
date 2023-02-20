@@ -14,15 +14,16 @@ Character::Character(int hp, int defence, int damage, std::string weapon, std::s
     this->numberOfAttacks = 1;
 }
 
+//Le personnage attaque un autre personnage passé en paramètre
 void Character::Attack(Character *p)
 {
-    for (int i = 0; i < this->numberOfAttacks; i++)
+    for (int i = 0; i < this->numberOfAttacks; i++)         //Pour chaque attaque que possède le personnage
     {
-        if  (this->damage > p->defence){
+        if  (this->damage > p->defence){                    //Si la cible n'a pas assez de point de défense
             std::cout << this->name << " retire " << this->damage - p->defence << "pv à " << p->name << std::endl;
-            p->hp -= this->damage - p->defence;
+            p->hp -= this->damage - p->defence;             //On lui retire des points de vie
         }
-        else
+        else                                                //Sinon, la cible "évite" l'attaque
         {
             std::cout << this->name << " attaque " << p->name << ". " << p->name << " évite l'attaque !" << std::endl;
         }

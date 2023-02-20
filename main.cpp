@@ -105,8 +105,32 @@ void makeActionHero(Hero *hero, int lapCounter, vector<Monster> &monsters)
     cout << "" << endl;
 }
 
+//Affiche une courte introduction
+void displayIntroduction()
+{
+    //Titre
+    cout << "\n/////////////////////////////////////////////\n//          Heros VS Monsters		   //\n/////////////////////////////////////////////" << endl;
+    //Crédits
+    cout << "Créé par: Théo Rondoux" << endl;
+    //Description
+    cout << "\nBienvenue dans 'Heros VS Monsters' !\n'Heros VS Monsters' est un petit jeu où 4 héros vont affronter un groupe de 10 monstres, au tour par tour." << endl;
+}
+
+//Permet d'attendre que l'utilisateur appuie sur la touche "Entrée"
+void waitForEnter(string message, bool useIgnore)
+{
+    cout << message << endl;
+    if (useIgnore)
+    {
+        cin.ignore();
+    }
+}
+
 int main(int argc, char *argv[])
 {
+    displayIntroduction();
+    waitForEnter("\nAppuyez sur Entrée pour passer à la création des héros", true);
+
     srand(time(NULL));
     //Création des héros et de la liste où ils sont contenus
     vector<Hero*> heros;
@@ -115,8 +139,11 @@ int main(int argc, char *argv[])
         heros.push_back(createHero(i));
         heros[i]->displayDescription();
     }
-    
+
+    waitForEnter("\nAppuyez sur Entrée pour continuer", true);
+
     //Création des monstres et de la liste où ils sont contenus
+    cout << "\nGénération des monstres, merci de patienter..." << endl;
     vector<Monster> monsters;
     int orcCounter = 1;
     int goblinCounter = 1;
@@ -125,11 +152,12 @@ int main(int argc, char *argv[])
         monsters.push_back(monster);
     }
 
+    cout << "Monstres créés !" << endl;
     //Début de la partie
     int lapCounter = 0;
     bool endGame = false;
     char enter;
-    cout << "\nAppuyez sur Entrée pour commerncer la partie" << endl;
+    waitForEnter("\nAppuyez sur Entrée pour commencer la partie", false);
     while(!endGame)
     {
         cin.ignore();
@@ -190,7 +218,7 @@ int main(int argc, char *argv[])
             heros.erase(heros.begin()+index);
         }
 
-        //Réinitialisation de la défense de tous les héros
+        //Réinitialisation des valeurs par défaut pour les héros
         for (Hero* hero : heros)
         {
             hero->resetValues();
@@ -202,17 +230,24 @@ int main(int argc, char *argv[])
             endGame = true;
         }
 
-        cout << "\nAppuyez sur Entrée pour continuer" << endl;
-        cin.ignore();
+        if (!endGame)
+        {
+            waitForEnter("\nAppuyez sur Entrée pour passer au tour suivant", true);
+        }
+        else
+        {
+            waitForEnter("\nAppuyez sur Entrée pour terminer la partie", true);
+        }
     }
     cin.ignore();
     
+    //Affiche une phrase en fonction de l'issue de la partie
     if(monsters.size() == 0)
     {
-        cout << "Les héros remportent la victoire !" << endl;
+        cout << "Les monstres ont été vaincus, les héros remportent la victoire !" << endl;
     }
     else
     {
-        cout << "Les monstres remportent la victoire..." << endl;
+        cout << "Les héros ont trépassé, les monstres remportent la victoire..." << endl;
     }
 }
