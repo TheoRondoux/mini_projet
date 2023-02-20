@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "Knight.h"
-#include "Clerk.h"
+#include "Cleric.h"
 #include "Ninja.h"
 #include "Monster.h"
 
@@ -43,7 +43,7 @@ Hero* createHero(int index)
     cout << "\nPersonnage n°"+to_string(index+1)+":" << endl;
     while (classSelector != 'K' && classSelector != 'C' && classSelector != 'N')                //Tant que le caractère de classe ne correspond pas à l'une des 3 options
     {
-        cout << "Choisissez une classe parmi :\n   [K]night\n   [C]lerk\n   [N]inja\n-> ";      
+        cout << "Choisissez une classe parmi :\n   [K]night\n   [C]leric\n   [N]inja\n-> ";      
         cin >> classSelector;                           //Demande à l'utilisateur d'entrer un caractère
     }
     cin.ignore();
@@ -60,7 +60,7 @@ Hero* createHero(int index)
         case 'K':
             return new Knight((weaponSelector == 0 ? "Hallebarde" : "Epee longue"), name);          //Création d'un chevalier avec une arme aléatoire
         case 'C':
-            return new Clerk((weaponSelector == 0 ? "Masse" : "Hache"), name);                      //Création d'un clerc avec une arme aléatoire
+            return new Cleric((weaponSelector == 0 ? "Masse" : "Hache"), name);                      //Création d'un clerc avec une arme aléatoire
         case 'N':
             return new Ninja("Sai", name);                                                          //Création d'un ninja
     }
