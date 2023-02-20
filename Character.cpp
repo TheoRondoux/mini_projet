@@ -19,7 +19,7 @@ void Character::Attack(Character *p)
     for (int i = 0; i < this->numberOfAttacks; i++)
     {
         if  (this->damage > p->defence){
-            std::cout << this->name << " retire " << this->damage - p->defence << "HP à " << p->name << std::endl;
+            std::cout << this->name << " retire " << this->damage - p->defence << "pv à " << p->name << std::endl;
             p->hp -= this->damage - p->defence;
         }
         else
@@ -68,7 +68,7 @@ void Character::resetValues()
 
 void Character::displayInfo()
 {
-    std::cout << this->name << ": " << this->hp << " HP " << std::endl;
+    std::cout << this->name << ": " << this->hp << " PV " << std::endl;
 }
 
 void Character::displayDescription()

@@ -2,7 +2,7 @@
 #include <string>
 #include "Ninja.h"
 
-Ninja::Ninja(std::string weapon, std::string name) : Hero((rand() % (49-30+1)+30), (rand() % (3-1+1)+1), 5, weapon, name){}
+Ninja::Ninja(std::string weapon, std::string name) : Hero((rand() % (40-30+1)+30), (rand() % (3-1+1)+1), 5, weapon, name){}
 
 void Ninja::useAbility()
 {   
