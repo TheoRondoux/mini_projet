@@ -48,7 +48,7 @@ A game is done when all the monsters or all the heros are dead.
 1. Clone the repository or download as zip the project.
 
 ### In Windows
-2. Install [Cygwin](https://www.cygwin.com/). In the setup, install the gpp and makefile dependencies.
+2. Install [Cygwin](https://www.cygwin.com/). In the setup, install the g++ and makefile dependencies.
 3. In the directory of the game, run the command `make`
 4. Launch the game using `./hero_vs_monsters.exe`
 
