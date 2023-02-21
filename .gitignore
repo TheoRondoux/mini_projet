@@ -1,0 +1,6 @@
+#Ignore VS Code settings
+.vscode
+
+#Ignore game executable
+hero_vs_monsters
+
