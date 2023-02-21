@@ -10,27 +10,25 @@ The subject was simple: create a little game, that can be played  in the console
 As a hero, you can choose between three different classes. Each one has its specific characteristics:
 
 ### The knight:
-A strong character, ready for battle!
+- A strong character, ready for battle!
 
-He has between 50 and 70 HP, and wields a halbert or a longsword, both dealing 8 points of damage. His sturdy armor grants him 4 to 6 points of defense.
+- He has between 50 and 70 HP, and wields a halbert or a longsword, both dealing 8 points of damage. His sturdy armor grants him 4 to 6 points of defense.
 
-His special ability ? He increase his damage by 5 points.
+- His special ability ? He increase his damage by 5 points.
 
 ### The cleric:
-The mystic guy!
+- The mystic guy!
 
-He has between 40 and 60 HP, he wields either an axe or a mace, both dealing 6 points of damage. He has between 3 and 5 points of defense. 
+- He has between 40 and 60 HP, he wields either an axe or a mace, both dealing 6 points of damage. He has between 3 and 5 points of defense. 
 
-His ability ? Healing himself of 5 points while fighting.
+- His ability ? Healing himself of 5 points while fighting.
 
 ### The Ninja
-Sneakiest charecter ever!
+- Sneakiest charecter ever!
 
-He has between 30 and 40 HP. He loves to attack with a saï, dealing 5 points of damage. He has between 1 and 3 points of defense.
+- He has between 30 and 40 HP. He loves to attack with a saï, dealing 5 points of damage. He has between 1 and 3 points of defense.
 
-His special ability ? He can attack another time with his other saï.
-
----
+- His special ability ? He can attack another time with his other saï.
 
 After having created 4 heros, the game can begin. Every turn, you can choose multiple options:
 ### Attack
@@ -61,3 +59,6 @@ sudo apt install g++
 ```
 3. In the game's directory, run the command `make`
 4. Launch the game using `./hero_vs_monsters`
+
+## Contact
+Théo Rondoux: [@Linkedin](https://linkedin.com/in/theo-rondoux-948ba720a/)
