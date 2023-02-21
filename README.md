@@ -21,6 +21,43 @@ The mystic guy!
 
 He has between 40 and 60 HP, he wields either an axe or a mace, both dealing 6 points of damage. He has between 3 and 5 points of defense. 
 
-His ability ? healing himself of 5 points while fighting.
+His ability ? Healing himself of 5 points while fighting.
 
-*To be continued...*
+### The Ninja
+Sneakiest charecter ever!
+
+He has between 30 and 40 HP. He loves to attack with a saï, dealing 5 points of damage. He has between 1 and 3 points of defense.
+
+His special ability ? He can attack another time with his other saï.
+
+---
+
+After having created 4 heros, the game can begin. Every turn, you can choose multiple options:
+### Attack
+It's very simple, the character attacks a random monster.
+
+### Defend
+When the character is defending himself, his points of defense increases by 75%. It only applies for the current turn.
+
+### Use special ability
+Every 3 turn, the character can use his ability. It is like a "bonus" for the current turn.
+
+### When does the game ends ?
+A game is done when all the monsters or all the heros are dead.
+
+
+## How to play ?
+1. Clone the repository or download as zip the project.
+
+### In Windows
+2. Install [Cygwin](https://www.cygwin.com/). In the setup, install the gpp and makefile dependencies.
+3. In the directory of the game, run the command `make`
+4. Launch the game using `./hero_vs_monsters.exe`
+
+### In Linux
+2. Install the gpp dependency
+```bash
+sudo apt install g++
+```
+3. In the game's directory, run the command `make`
+4. Launch the game using `./hero_vs_monsters`
