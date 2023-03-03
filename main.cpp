@@ -9,6 +9,9 @@
 #include "Ninja.h"
 #include "Monster.h"
 
+#define NB_HEROES 4
+#define NB_MONSTERS 10
+
 using namespace std;
 
 /*------------------------------------------------------------------------------------------------------*/
@@ -75,10 +78,10 @@ void makeActionHero(Hero *hero, int lapCounter, vector<Monster> &monsters)
     while (action != 'A' && action != 'D' && action != 'P')     //Tant que l'action n'est pas dans les options possibles
     {
         if (lapCounter % 3 == 0){     //Si le numéro du tour est divisible par 3, on propose à l'utilisateur d'utiliser son pouvoir
-            cout << "Choissisez une action à réaliser pour " << hero->getName() << " (" << hero->getHp() << " PV):\n  [A]ttaquer\n  Se [D]efendre\n  Utiliser [P]ouvoir et Attaquer\n-> ";
+            cout << "Choissisez une action à réaliser pour " << hero->getName() << " (" << hero->getHp() << " PV):\n  [A]ttaquer\n  Se [D]éfendre\n  Utiliser [P]ouvoir et Attaquer\n-> ";
         }
         else{
-            cout << "Choissisez une action à réaliser pour " << hero->getName() << " (" << hero->getHp() << " PV):\n  [A]ttaquer\n  Se [D]efendre\n-> ";
+            cout << "Choissisez une action à réaliser pour " << hero->getName() << " (" << hero->getHp() << " PV):\n  [A]ttaquer\n  Se [D]éfendre\n-> ";
         }
         cin >> action;      //On demande à l'utilisateur de saisir un caractère
     }
@@ -113,7 +116,8 @@ void displayIntroduction()
     //Crédits
     cout << "Créé par: Théo Rondoux" << endl;
     //Description
-    cout << "\nBienvenue dans 'Heros VS Monsters' !\n'Heros VS Monsters' est un petit jeu où 4 héros vont affronter un groupe de 10 monstres, au tour par tour." << endl;
+    cout << "\nBienvenue dans 'Heros VS Monsters' !\n'Heros VS Monsters' est un petit jeu où " << NB_HEROES << " héros vont affronter un groupe de " << NB_MONSTERS << " monstres, au tour par tour." << endl;
+    cout << "\nAide: \n   1 - Lorsque vous voyez une lettre entre crochets, vous devez entrer cette lettre pour choisir une option.\n   2 - Pour arrêter de jouer, appuyez sur CTRL+C à n'importe quel moment." << endl;
 }
 
 //Permet d'attendre que l'utilisateur appuie sur la touche "Entrée"
@@ -134,7 +138,7 @@ int main(int argc, char *argv[])
     srand(time(NULL));
     //Création des héros et de la liste où ils sont contenus
     vector<Hero*> heros;
-    for (int i = 0; i < 4; i++)
+    for (int i = 0; i < NB_HEROES; i++)
     {
         heros.push_back(createHero(i));
         heros[i]->displayDescription();
@@ -147,7 +151,7 @@ int main(int argc, char *argv[])
     vector<Monster> monsters;
     int orcCounter = 1;
     int goblinCounter = 1;
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < NB_MONSTERS; i++){
         Monster monster = generateMonster(orcCounter, goblinCounter);
         monsters.push_back(monster);
     }
@@ -156,7 +160,6 @@ int main(int argc, char *argv[])
     //Début de la partie
     int lapCounter = 0;
     bool endGame = false;
-    char enter;
     waitForEnter("\nAppuyez sur Entrée pour commencer la partie", false);
     while(!endGame)
     {
