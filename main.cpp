@@ -48,6 +48,7 @@ Hero* createHero(int index)
     {
         cout << "Choisissez une classe parmi :\n   [K]night\n   [C]leric\n   [N]inja\n-> ";      
         cin >> classSelector;                           //Demande à l'utilisateur d'entrer un caractère
+        classSelector = toupper(classSelector);         //Convertit le caractère en majuscule
     }
     cin.ignore();
     
@@ -84,6 +85,7 @@ void makeActionHero(Hero *hero, int lapCounter, vector<Monster> &monsters)
             cout << "Choissisez une action à réaliser pour " << hero->getName() << " (" << hero->getHp() << " PV):\n  [A]ttaquer\n  Se [D]éfendre\n-> ";
         }
         cin >> action;      //On demande à l'utilisateur de saisir un caractère
+        action = toupper(action);       //On met le caractère en majuscule
     }
     cout << "" << endl;
     switch(action)          //En fonction de l'action choisie
